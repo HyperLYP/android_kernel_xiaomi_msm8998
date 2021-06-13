@@ -65,10 +65,10 @@ scm_version()
 
 			# If only the short version is requested, don't bother
 			# running further git commands
-			if $short; then
-				echo "+"
-				return
-			fi
+			# if $short; then
+			#	echo "+"
+			#	return
+			# fi
 			# If we are past a tagged commit (like
 			# "v2.6.30-rc5-302-g72357d5"), we pretty print it and
 			# include the hash of any new tag on top.
@@ -89,8 +89,7 @@ scm_version()
 			# If we don't have a tag at all we print -g{commitish},
 			# again using exactly 12 hex chars.
 			else
-				head="$(echo $head | cut -c1-12)"
-				printf '%s%s' -g $head
+				printf '%s%s'
 			fi
 		fi
 
@@ -109,7 +108,7 @@ scm_version()
 			git --no-optional-locks status -uno --porcelain 2>/dev/null ||
 			git diff-index --name-only HEAD
 		} | grep -qvE '^(.. )?scripts/package'; then
-			printf '%s' -dirty
+			printf '%s'
 		fi
 
 		# All done with git

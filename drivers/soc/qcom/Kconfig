@@ -998,4 +998,10 @@ config SERIAL_NUM
 	help
 	 Provide a interface for reading CPU serial number
 
+config MFSE_QMI
+	bool "QMI client for MFSE"
+	depends on MSM_QMI_INTERFACE
+	help
+	 This option enables the QMI client driver for MFSE service.
+
 source "drivers/soc/qcom/memshare/Kconfig"
